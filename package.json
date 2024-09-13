@@ -4,7 +4,8 @@
   "description": "",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "e2e:web": "cypress run --spec cypress/e2e/features/webTesting.feature",
+    "e2e:api": "cypress run --spec cypress/e2e/features/apiTesting.feature"
   },
   "author": "",
   "license": "ISC",
