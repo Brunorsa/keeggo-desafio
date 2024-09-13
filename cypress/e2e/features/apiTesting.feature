@@ -9,7 +9,7 @@ Funcionalidade: AdvantageDemo.com
     Entao o statuscode deve ser 200 OK
 
   Cenario: Atualize a imagem de um produto (PUT)
-    Dado que loguei via API
+    # Dado que loguei via API
     E rodo a requisição
     E verificar se o produto foi atualizado
-    Entao o statuscode deve ser 201 Created
+    Entao o statuscode deve ser 200

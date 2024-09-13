@@ -15,7 +15,6 @@ git clone https://github.com/Brunorsa/keeggo-desafio.git
 
 ```
 npm install
-
 ```
 3. Rodando testes em modo headless
 
