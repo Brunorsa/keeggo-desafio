@@ -29,13 +29,16 @@ Given(/^que loguei via API$/, () => {
     loginPassword: "Teste1",
     loginUser: "teste2"
   }).then((resp) => {
-    let token = resp.body.statusMessage.token
-    
+    const token = resp.body.statusMessage.token
+    Cypress.env('tokenUser', token)
+
     expect(resp.status).to.eq(200)
   })
 });
 
 When(/^rodo a requisição$/, () => {
+  const token = Cypress.env('tokenUser');
+
   cy.fixture("teste.jpg", 'binary').then((image) => {
     const blob = Cypress.Blob.binaryStringToBlob(image, 'teste/jpg')
     const formData = new FormData()
@@ -47,7 +50,7 @@ When(/^rodo a requisição$/, () => {
       body: formData,
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3d3cuYWR2YW50YWdlb25saW5lc2hvcHBpbmcuY29tIiwidXNlcklkIjoyNjU2ODI1NzQsInN1YiI6InRlc3RlMiIsInJvbGUiOiJBRE1JTiJ9.qxyQnadFii3szUIQCehh2pnyRNlxPWq6WCxqzKdi8fc`
+        Authorization: `Bearer ${token}`
       }
     }).then((response) => {
       expect(response.status).to.eq(200);
